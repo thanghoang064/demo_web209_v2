@@ -43,4 +43,17 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+chạy 
+: npm i json-server (Cài json-server)
+ chạy npm install concurrently (để build được cả 2)
+
+cấu hình trong pakage json
+
+
+
+    "start": "concurrently \"npm run server\" \"npm run react\"",
+    "react": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "json-server --watch db.json --port 3001"
