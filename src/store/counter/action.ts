@@ -1,10 +1,13 @@
 import * as actionTypes from './type'
 import { DispatchType } from './type'
 
+// định nghĩa cho cái action 
 export type CounterAction = {
-    type :string,
-    payload :number
+    type :string, // tên action 
+    payload :number  //data muốn truyền vào để xử lý 
 }
+
+
 
 export function increaseCountAction(count:number) {
     

@@ -7,6 +7,8 @@ import Button from './components/Button';
 import Button1 from './components/Button1';
 import { EffectDemo } from './components/EffectDemo';
 import Login from './components/Login';
+import ComponentA from './components/ComponentA';
+import ComponentB from './components/ComponentB';
 
 function App() {
   return (
@@ -15,10 +17,12 @@ function App() {
        <PropDemo name="abc" type={1}></PropDemo>
         {/* <PropDemo name="abwc" type={122}></PropDemo> */}
         {/* <Counter></Counter> */}
-        {/* <EffectDemo></EffectDemo>
-        <Button1></Button1>
+        {/* <EffectDemo></EffectDemo> */}
+        {/* <Button1></Button1>
         <Button></Button> */}
-        <Login></Login>
+        <ComponentA></ComponentA>
+        <ComponentB></ComponentB>
+        {/* <Login></Login> */}
       </header>
     </div>
   );

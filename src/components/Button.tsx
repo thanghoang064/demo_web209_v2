@@ -10,7 +10,6 @@ const Button = () =>  {
     
     const counterState = useSelector(
         (state: IRootState) => state.counter,
-        shallowEqual
     )
 
     const increase = () => {
