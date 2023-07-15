@@ -12,7 +12,7 @@ const ComponentA = () => {
     const [so1,setSo1] = useState<number>(0);
     const [so2,setSo2] = useState<number>(0);
     const sum = () => {
-        console.log(so1 +" "+so2)
+        
         dispatch(sumTwoNumBerAction(so1,so2))
     }
     return (
