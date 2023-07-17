@@ -9,21 +9,21 @@ import { EffectDemo } from './components/EffectDemo';
 import Login from './components/Login';
 import ComponentA from './components/ComponentA';
 import ComponentB from './components/ComponentB';
-
+import { Route, Routes } from 'react-router-dom';
+import Layout from './components/templates/Layout';
+import ShowSinhVien from './components/pages/sinhvien/ShowSinhVien';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">      
-       <PropDemo name="abc" type={1}></PropDemo>
-        {/* <PropDemo name="abwc" type={122}></PropDemo> */}
-        {/* <Counter></Counter> */}
-        {/* <EffectDemo></EffectDemo> */}
-        {/* <Button1></Button1>
-        <Button></Button> */}
-        <ComponentA></ComponentA>
-        <ComponentB></ComponentB>
-        {/* <Login></Login> */}
-      </header>
+        <Routes>
+            <Route path="/" element={<Layout />}>
+                <Route
+                    path="dashboard"
+                    element={<ComponentA />}
+                />
+                <Route path="sinhvien" element={<ShowSinhVien/>} />
+            </Route>
+        </Routes>
     </div>
   );
 }

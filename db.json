@@ -1,0 +1,36 @@
+{
+  "student": [
+    {
+      "id": 2,
+      "ten": "2332",
+      "namsinh": 1212
+    },
+    {
+      "id": 3,
+      "ten": "2222",
+      "namsinh": 1998
+    },
+    {
+      "id": 4,
+      "ten": "2112",
+      "namsinh": 2112
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -1,28 +1,42 @@
-import { DispatchType } from "./type"
+import { AddSVDispatchType, DeleteSVDispatchType, GetListSVDispatchType, LoadingSvDispatchType } from "./type"
 
 // ddinh nghia khuon mau sinh vien co clj
-export interface ISinhVien  {
-    id:number
-    ten:string,
+export interface ISinhVien {
+    id: number
+    ten: string,
     namsinh: number
 }
+
+interface IGetListSvPayload {
+    sinhviens: ISinhVien[]
+    loading: boolean
+    error: unknown
+}
+
 // dinh nghia 1 cái action
 
-export interface SinhVienAction   {
-    type:string, // phân biệt được action đấy là action gì (Thêm , Xóa , Sửa)
-    payload : ISinhVien// là dữ liệu được gửi đến cái tk lozz reducer để xử lý
+export interface GetListSinhVienAction {
+    type: 'get-sv', // phân biệt được action đấy là action gì (Thêm , Xóa , Sửa)
+    payload: IGetListSvPayload// là dữ liệu được gửi đến cái tk lozz reducer để xử lý
 }
-export function addSinhVien(sv:ISinhVien) {
-    //khoi tao 1 action (bao gom 2 gia tri - kieu action - gia tri cua action payload )
-    // const action:SinhVienAction =  {
-    //     type : 'add-sv',
-    //     payload : sv
-    // }
-    // // gọi đến 1 hàm dispatch
-    // return (dispatch: DispatchType) => {
-    //     dispatch(action)
-    // }
-    return async (dispatch: DispatchType) => {
+
+export type AddSinhVienAction = {
+    type: 'add-sv', // phân biệt được action đấy là action gì (Thêm , Xóa , Sửa)
+    payload: ISinhVien// là dữ liệu được gửi đến cái tk lozz reducer để xử lý
+}
+
+export type LoadingSinhVienAction = {
+    type: 'loading-sv',
+    payload: boolean
+}
+
+export type DeleteSinhVienAction = {
+    type: 'xoa-sv', // phân biệt được action đấy là action gì (Thêm , Xóa , Sửa)
+    payload: ISinhVien// là dữ liệu được gửi đến cái tk lozz reducer để xử lý
+}
+
+export function addSinhVien(sv: ISinhVien) {
+    return async (dispatch: AddSVDispatchType) => {
         try {
             const response = await fetch('http://localhost:3001/student', {
                 method: 'POST',
@@ -49,17 +63,8 @@ export function addSinhVien(sv:ISinhVien) {
         }
     };
 }
-export function deleteSinhVien(sv:ISinhVien) {
-    //khoi tao 1 action (bao gom 2 gia tri - kieu action - gia tri cua action payload )
-    // const action:SinhVienAction =  {
-    //     type : 'xoa-sv',
-    //     payload : sv
-    // }
-    // // gọi đến 1 hàm dispatch
-    // return (dispatch: DispatchType) => {
-    //     dispatch(action)
-    // }
-    return async (dispatch:DispatchType) => {
+export function deleteSinhVien(sv: ISinhVien) {
+    return async (dispatch: DeleteSVDispatchType) => {
         try {
             const response = await fetch(`http://localhost:3001/student/${sv.id}`, {
                 method: 'DELETE'
@@ -73,7 +78,7 @@ export function deleteSinhVien(sv:ISinhVien) {
             // Ví dụ: dispatch action để cập nhật danh sách sinh viên
             dispatch({
                 type: 'xoa-sv',
-                payload:sv
+                payload: sv
             });
 
         } catch (error) {
@@ -82,22 +87,40 @@ export function deleteSinhVien(sv:ISinhVien) {
     };
 }
 export const fetchSinhViensAction = () => {
-
-    return async (dispatch: DispatchType) => {
+    console.log('fetchSinhViensAction')
+    return async (dispatch: GetListSVDispatchType) => {
         try {
+            // dispatch({
+            //     type: 'get-sv',
+            //     payload: {
+            //         error: null,
+            //         loading: false,
+            //         sinhviens: []
+            //     }
+            // });
             const response = await fetch('http://localhost:3001/student');
-            const data = await response.json();
-            console.log("123");
+            const data: ISinhVien[] = await response.json();
+            console.log("123", data);
             dispatch({
                 type: 'get-sv',
-                payload: data
-            });
-            dispatch({
-                type: 'SET_DATA_LOADED',
-                payload: data
+                payload: {
+                    error: null,
+                    loading: false,
+                    sinhviens: data
+                }
             });
         } catch (error) {
             console.log(error);
         }
     };
 };
+
+
+export const loadingSinhVien = (loading = false) => {
+    return (dispatch: LoadingSvDispatchType) => {
+        dispatch({
+            type: 'loading-sv',
+            payload: loading
+        })
+    }
+}
