@@ -1,4 +1,4 @@
-import { AddSVDispatchType, DeleteSVDispatchType, GetListSVDispatchType, LoadingSvDispatchType } from "./type"
+import { AddSVDispatchType, DeleteSVDispatchType, DetailSvDispatchType, GetListSVDispatchType, LoadingSvDispatchType } from "./type"
 
 // ddinh nghia khuon mau sinh vien co clj
 export interface ISinhVien {
@@ -33,6 +33,10 @@ export type LoadingSinhVienAction = {
 export type DeleteSinhVienAction = {
     type: 'xoa-sv', // phân biệt được action đấy là action gì (Thêm , Xóa , Sửa)
     payload: ISinhVien// là dữ liệu được gửi đến cái tk lozz reducer để xử lý
+}
+export type DetailSinhVienAction = {
+    type : 'ct-sv',
+    payload: ISinhVien
 }
 
 export function addSinhVien(sv: ISinhVien) {
@@ -121,6 +125,16 @@ export const loadingSinhVien = (loading = false) => {
         dispatch({
             type: 'loading-sv',
             payload: loading
+        })
+    }
+}
+
+
+export const detailSinhVien = (sv: ISinhVien) => {
+    return (dispatch: DetailSvDispatchType) => {
+        dispatch({
+            type: 'ct-sv',
+            payload:sv
         })
     }
 }

@@ -1,20 +1,23 @@
-import { ISinhVien, GetListSinhVienAction, DeleteSinhVienAction, AddSinhVienAction, LoadingSinhVienAction } from "./action";
+import { ISinhVien, GetListSinhVienAction, DeleteSinhVienAction, AddSinhVienAction, LoadingSinhVienAction, DetailSinhVienAction } from "./action";
 import { DeleteSVDispatchType } from "./type";
 
 //Định nghĩa cái state của sinh viên
 export interface ISinhVienState {
+    sinhvien : ISinhVien
     sinhviens: ISinhVien[],
     isDataLoaded: boolean,
     error: unknown
 }
 // giá trị mặc định defaut cho nó
 const initSinhVienState: ISinhVienState = {
+    sinhvien : {id : 0,ten: "",namsinh : 0} ,
     sinhviens: [],
     isDataLoaded: false,
     error: null
 }
 
-type ICombinedActions = GetListSinhVienAction | DeleteSinhVienAction | AddSinhVienAction | LoadingSinhVienAction
+type ICombinedActions = GetListSinhVienAction | DeleteSinhVienAction 
+| AddSinhVienAction | LoadingSinhVienAction | DetailSinhVienAction
 
 const sinhVienReducer = (state: ISinhVienState = initSinhVienState, action: ICombinedActions): ISinhVienState => {
     switch (action.type) {
@@ -42,6 +45,16 @@ const sinhVienReducer = (state: ISinhVienState = initSinhVienState, action: ICom
             state = {
                 ...state,
                 isDataLoaded: action.payload
+            }
+            break;
+        case 'ct-sv':
+            state = {
+                ...state,
+                sinhvien: {
+                    id: action.payload.id,
+                    ten: action.payload.ten,
+                    namsinh : action.payload.namsinh
+                }
             }
             break;
         default:

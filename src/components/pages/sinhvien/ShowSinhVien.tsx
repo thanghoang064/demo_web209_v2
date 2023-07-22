@@ -5,7 +5,7 @@ import { Dispatch } from "redux";
 import { useEffect, useState } from "react";
 import FormSinhVien from "./FormSinhVien";
 import { IRootState } from "../../../store";
-import { ISinhVien, deleteSinhVien, fetchSinhViensAction, loadingSinhVien } from "../../../store/sinhvien/action";
+import { ISinhVien, deleteSinhVien, detailSinhVien, fetchSinhViensAction, loadingSinhVien } from "../../../store/sinhvien/action";
 
 
 const ShowSinhVien = () => {
@@ -14,7 +14,7 @@ const ShowSinhVien = () => {
 
     const sinhvienState = useSelector(
         (state: IRootState) => state.sinhvien,
-    )
+    ) 
     const abortController = new AbortController();
 
     useEffect(() => {
@@ -28,10 +28,13 @@ const ShowSinhVien = () => {
     const handleDeleteSV = (sv: ISinhVien) => {
         dispatch(deleteSinhVien(sv));
     }
+    const handleDetailSV = (sv: ISinhVien) => {
+        dispatch(detailSinhVien(sv));
+    }
 
     return (
         <>
-            <FormSinhVien />
+            <FormSinhVien/>
             <div className="flex flex-col">
                 <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -51,7 +54,10 @@ const ShowSinhVien = () => {
                                             <td className="whitespace-nowrap px-6 py-4 font-medium">{sv.id}</td>
                                             <td className="whitespace-nowrap px-6 py-4">{sv.ten}</td>
                                             <td className="whitespace-nowrap px-6 py-4">{sv.namsinh}</td>
-                                            <td className="whitespace-nowrap px-6 py-4"><button onClick={event => handleDeleteSV(sv)}>Xóa</button> </td>
+                                            <td className="whitespace-nowrap px-6 py-4">
+                                                <button onClick={event => handleDeleteSV(sv)}>Xóa</button>
+                                                <button onClick={event => handleDetailSV(sv)}>Edit</button>
+                                                 </td>
                                         </tr>
 
                                     })}

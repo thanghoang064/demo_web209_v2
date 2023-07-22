@@ -1,14 +1,18 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Dispatch } from "redux";
 import { useState } from "react"
 import { ISinhVien, addSinhVien } from "../../../store/sinhvien/action";
+import { IRootState } from "../../../store";
 
-const FormSinhVien = () => {
+interface IProps {
+    stateStudent? : string 
+}
+const FormSinhVien = (props: IProps) => {
     const [ten, setTen] = useState('');
     const [namsinh, setNamSinh] = useState<number>(0);
     const [id, setId] = useState<number>(0);
     const dispatch: Dispatch<any> = useDispatch()
-
+    
     const add = (e: any) => {
         e.preventDefault();
         const sv: ISinhVien = {
@@ -17,14 +21,21 @@ const FormSinhVien = () => {
             namsinh,
             
         }
+      
+        // const sinhvienState1 = useSelector(
+        //     (state: IRootState) => state.sinhvien,
+        // ) 
 
         dispatch(addSinhVien(sv))
     }
+    const sinhvienState = useSelector(
+        (state: IRootState) => state.sinhvien,
+    ) 
     return (
         <form onSubmit={add}>
             <div className="mb-6">
                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ten Sinh vien</label>
-                <input onChange={(event) => setTen(event.target.value)} type="text" id="ten" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nhap ten sinh vien" />
+                <input value={sinhvienState.sinhvien.namsinh != 0 ? sinhvienState.sinhvien.namsinh : '' } onChange={(event) => setTen(event.target.value)} type="text" id="ten" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nhap ten sinh vien" />
             </div>
             <div className="mb-6">
                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nam Sinh</label>
