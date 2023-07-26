@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import FormSinhVien from "./FormSinhVien";
 import { IRootState } from "../../../store";
 import { ISinhVien, deleteSinhVien, detailSinhVien, fetchSinhViensAction, loadingSinhVien } from "../../../store/sinhvien/action";
+import { CartAction } from "../../../store/order/action";
+import Cart from "./Cart";
 
 
 const ShowSinhVien = () => {
@@ -31,9 +33,13 @@ const ShowSinhVien = () => {
     const handleDetailSV = (sv: ISinhVien) => {
         dispatch(detailSinhVien(sv));
     }
+    const handleAddToCart = (sv: ISinhVien) => {
+        dispatch(CartAction(sv))
+    }
 
     return (
         <>
+           <Cart></Cart>
             <FormSinhVien/>
             <div className="flex flex-col">
                 <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -57,6 +63,7 @@ const ShowSinhVien = () => {
                                             <td className="whitespace-nowrap px-6 py-4">
                                                 <button onClick={event => handleDeleteSV(sv)}>Xóa</button>
                                                 <button onClick={event => handleDetailSV(sv)}>Edit</button>
+                                                <button onClick={event => handleAddToCart(sv)}>Add cart</button>
                                                  </td>
                                         </tr>
 
