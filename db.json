@@ -1,4 +1,26 @@
 {
+  "order": [
+    [
+      {
+        "productId": 3,
+        "quantity": 1,
+        "price": 1998
+      },
+      {
+        "productId": 2,
+        "quantity": 1,
+        "price": 1212
+      }
+    ],
+    [
+      {
+        "productId": 2,
+        "quantity": 3,
+        "price": 1212
+      }
+    ]
+  ],
+  "orderDetail": [],
   "student": [
     {
       "id": 2,

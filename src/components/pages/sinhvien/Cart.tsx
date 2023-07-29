@@ -1,12 +1,17 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../../store";
 import { useEffect, useState } from "react";
+import { getTotalAmounSelector } from "../../../store/order/selector";
+import { Dispatch } from "redux";
+import { saveOrderAction } from "../../../store/order/action";
 
 interface ICart {
     productName: string
-    quantity: number
+    quantity: number,
+    price: number
 }
 const Cart = () => {
+    const dispatch: Dispatch<any> = useDispatch()
     const orderState = useSelector((state: IRootState) => state.orders);
     const productState = useSelector((state: IRootState) => state.sinhvien);
 
@@ -36,7 +41,8 @@ const Cart = () => {
             if (product) {
                 cartTemp.push({
                     productName: product.ten,
-                    quantity: order.quantity
+                    quantity: order.quantity,
+                    price: order.price
                 })
             }
         }
@@ -47,11 +53,16 @@ const Cart = () => {
     const handleShowDetailsOrders = () => {
         setShowDetails((state) => !state)
     }
+    const handleOrders = () => {
+        dispatch(saveOrderAction(orderState.orders));
+    }
     return (
         <>
             <h2>Header</h2>
             <p>Your orders: {orderState.orders.length}</p>
+            <h4>Total quantity: {getTotalAmounSelector(orderState)}</h4>
             <span onClick={handleShowDetailsOrders} style={{ cursor: "pointer" }}>Show details</span>
+            <button onClick={handleOrders}>Order</button>
             {
                 showDetails && <div>
                     <hr />
@@ -60,12 +71,14 @@ const Cart = () => {
                         <tr>
                             <th>Product Name</th>
                             <th>Quantity</th>
+                            <th>Total amount</th>
                         </tr>
                         {
                             carts.map((cart, index) => {
                                 return (<tr key={index}>
                                     <td>{cart.productName}</td>
                                     <td>{cart.quantity}</td>
+                                    <td>{cart.quantity * cart.price}</td>
                                 </tr>)
                             })
                         }
