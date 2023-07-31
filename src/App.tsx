@@ -15,7 +15,7 @@ import ShowSinhVien from './components/pages/sinhvien/ShowSinhVien';
 function App() {
   return (
     <div className="App">
-        <Routes>
+        {/* <Routes>
             <Route path="/" element={<Layout />}>
                 <Route
                     path="dashboard"
@@ -23,7 +23,8 @@ function App() {
                 />
                 <Route path="sinhvien" element={<ShowSinhVien/>} />
             </Route>
-        </Routes>
+        </Routes> */}
+        <Counter /> 
     </div>
   );
 }
