@@ -12,19 +12,21 @@ import ComponentB from './components/ComponentB';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/templates/Layout';
 import ShowSinhVien from './components/pages/sinhvien/ShowSinhVien';
+import Nana from './components/Nana';
+import Nana1 from './components/Nana1';
 function App() {
   return (
     <div className="App">
-        {/* <Routes>
+        <Routes>
             <Route path="/" element={<Layout />}>
                 <Route
                     path="dashboard"
-                    element={<ComponentA />}
+                    element={<Nana />}
                 />
-                <Route path="sinhvien" element={<ShowSinhVien/>} />
+                <Route path="sinhvien" element={<Nana1 />} />
             </Route>
-        </Routes> */}
-        <Counter /> 
+        </Routes>
+         
     </div>
   );
 }
