@@ -19,10 +19,25 @@ export const nanaApi = createApi({
                 body: student,
             }),
             invalidatesTags: ['Student'],
+        }),
+        editStudent: builder.mutation<INana[], INana>({
+            query: ({id, ...student}) => ({
+                url: `/${id}`,
+                method: 'PUT',
+                body: student,
+            }),
+            invalidatesTags: ['Student'],
+        }),
+        deleteStudent: builder.mutation<INana[], INana>({
+            query: ({id}) => ({
+                url: `/${id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ['Student'],
         })
     }),
 })
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetStudenListQuery, useAddStudentMutation } = nanaApi
+export const { useGetStudenListQuery, useAddStudentMutation, useEditStudentMutation, useDeleteStudentMutation } = nanaApi

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../toolkit";
 import { useEffect, useState } from "react";
-import { useAddStudentMutation, useGetStudenListQuery } from "../toolkit/nana/nana.service";
+import { useAddStudentMutation, useDeleteStudentMutation, useEditStudentMutation, useGetStudenListQuery } from "../toolkit/nana/nana.service";
 import { loadStudentList } from "../toolkit/nana/nanaSlice";
 import { INana } from "../toolkit/nana/nana.interface";
 
@@ -18,7 +18,9 @@ const Nana = () => {
     const dispatch = useDispatch()
 
     const { isError, isLoading, data: studentList, isSuccess: studentListSuccess, refetch } = useGetStudenListQuery(null);
-    const [onAddStudent, result] = useAddStudentMutation()
+    const [onAddStudent] = useAddStudentMutation();
+    const [onEditStudent] = useEditStudentMutation();
+    const [onDeleteStudent] = useDeleteStudentMutation();
 
 
     useEffect(() => {
@@ -39,7 +41,9 @@ const Nana = () => {
             <ul>
                 {
                     (studentList as INana[] || []).map(student => {
-                        return <li key={student.id}>{student.ten}</li>
+                        return <li key={student.id}>{student.ten} <button onClick={() => onEditStudent({id:student.id,ten:"Nan",namsinh:1997})}>Sửa</button>
+                        <button onClick={() => onDeleteStudent(student)}>xóa</button>
+                        </li>
                     })
                 }
             </ul>

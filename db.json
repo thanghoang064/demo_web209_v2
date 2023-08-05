@@ -23,38 +23,31 @@
   "orderDetail": [],
   "student": [
     {
-      "id": 2,
-      "ten": "2332",
-      "namsinh": 1212
-    },
-    {
-      "id": 3,
-      "ten": "2222",
-      "namsinh": 1998
-    },
-    {
       "id": 4,
       "ten": "2112",
       "namsinh": 2112
     },
     {
-      "ten": "Thang",
-      "namsinh": 1996,
+      "student": {
+        "id": 5,
+        "ten": "Nan",
+        "namsinh": 1997
+      },
       "id": 5
     },
     {
-      "ten": "Thang",
-      "namsinh": 1996,
+      "ten": "Nan",
+      "namsinh": 1997,
       "id": 6
     },
     {
-      "ten": "Thang",
-      "namsinh": 1996,
+      "ten": "Nan",
+      "namsinh": 1997,
       "id": 7
     },
     {
-      "ten": "Thang",
-      "namsinh": 1996,
+      "ten": "Nan",
+      "namsinh": 1997,
       "id": 8
     },
     {
@@ -66,51 +59,6 @@
       "ten": "Thang",
       "namsinh": 1996,
       "id": 10
-    },
-    {
-      "ten": "Thang",
-      "namsinh": 1996,
-      "id": 11
-    },
-    {
-      "ten": "Thang",
-      "namsinh": 1996,
-      "id": 12
-    },
-    {
-      "ten": "Thang",
-      "namsinh": 1996,
-      "id": 13
-    },
-    {
-      "ten": "Thang",
-      "namsinh": 1996,
-      "id": 14
-    },
-    {
-      "ten": "Thang",
-      "namsinh": 1996,
-      "id": 15
-    },
-    {
-      "ten": "Thang",
-      "namsinh": 1996,
-      "id": 16
-    },
-    {
-      "ten": "Thang",
-      "namsinh": 1996,
-      "id": 17
-    },
-    {
-      "ten": "Thang",
-      "namsinh": 1996,
-      "id": 18
-    },
-    {
-      "ten": "Thang",
-      "namsinh": 1996,
-      "id": 19
     }
   ],
   "posts": [
