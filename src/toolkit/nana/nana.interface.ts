@@ -5,5 +5,10 @@ export interface INana {
 }
 
 export interface INanaState {
-    nanas: INana[]
+    nanas: INana[],
+    nana : INana
+}
+export interface SearchPayload {
+    searchTerm: string;
+    nanas: INana[];
 }

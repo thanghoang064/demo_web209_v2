@@ -15,9 +15,18 @@ const studentSlice = createSlice({
             },
         addNewStudent: (state, action: PayloadAction<IStudent>) => {
             state.students.unshift(action.payload)
+        },
+        searchStudent: (state, action: PayloadAction<String>) => {
+            console.log(state.students);
+            const searchTerm = action.payload.toLowerCase();
+            state.students = initialState.students.filter(student => student.ten.toLowerCase().includes(searchTerm));
+            
+            // state.students.unshift(action.payload)
+            // const orderExistingIndex = state.students.findIndex(student => student.ten === ac)
+        
         }
     },
 })
 
-export const { loadStudentList, addNewStudent } = studentSlice.actions;
+export const { loadStudentList, addNewStudent,searchStudent } = studentSlice.actions;
 export default studentSlice.reducer;

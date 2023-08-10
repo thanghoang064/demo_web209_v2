@@ -23,42 +23,34 @@
   "orderDetail": [],
   "student": [
     {
-      "id": 4,
-      "ten": "2112",
-      "namsinh": 2112
+      "ten": "thang",
+      "namsinh": 1997,
+      "id": 1
     },
     {
-      "student": {
-        "id": 5,
-        "ten": "Nan",
-        "namsinh": 1997
-      },
+      "ten": "thang",
+      "namsinh": 1997,
+      "id": 2
+    },
+    {
+      "ten": "trung",
+      "namsinh": 1998,
+      "id": 3
+    },
+    {
+      "ten": "duyeee",
+      "namsinh": 1998,
+      "id": 4
+    },
+    {
+      "ten": "trun",
+      "namsinh": 0,
       "id": 5
     },
     {
-      "ten": "Nan",
-      "namsinh": 1997,
+      "ten": "trung",
+      "namsinh": 1995,
       "id": 6
-    },
-    {
-      "ten": "Nan",
-      "namsinh": 1997,
-      "id": 7
-    },
-    {
-      "ten": "Nan",
-      "namsinh": 1997,
-      "id": 8
-    },
-    {
-      "ten": "Thang",
-      "namsinh": 1996,
-      "id": 9
-    },
-    {
-      "ten": "Thang",
-      "namsinh": 1996,
-      "id": 10
     }
   ],
   "posts": [
